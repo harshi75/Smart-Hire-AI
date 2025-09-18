@@ -510,7 +510,7 @@
         /* Login Section */
         .login-section {
             padding: 80px 0;
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             min-height: calc(100vh - 200px);
@@ -2949,6 +2949,10 @@
         const learnMoreBtn = document.getElementById('learnMoreBtn');
         const getStartedBtn = document.getElementById('getStartedBtn');
         
+        // Header login and signup buttons
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        
         // Login options
         const loginOptions = document.getElementById('loginOptions');
         const candidateLoginOption = document.getElementById('candidateLoginOption');
@@ -2969,6 +2973,10 @@
         const candidatePassword = document.getElementById('candidatePassword');
         const companyEmail = document.getElementById('companyEmail');
         const companyPassword = document.getElementById('companyPassword');
+        
+        // Signup links
+        const candidateSignupLink = document.getElementById('candidateSignupLink');
+        const companySignupLink = document.getElementById('companySignupLink');
         
         // Resume upload
         const resumeUpload = document.getElementById('resumeUpload');
@@ -3039,6 +3047,77 @@
             }
             
             showNotification('Please login to continue', 'info');
+        });
+        
+        // Header login and signup buttons
+        loginBtn.addEventListener('click', () => {
+            // Hide dashboards if they're visible
+            candidateDashboard.style.display = 'none';
+            companyDashboard.style.display = 'none';
+            
+            // Show login section
+            loginSection.style.display = 'flex';
+            loginSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset login forms
+            loginOptions.style.display = 'block';
+            candidateLoginForm.style.display = 'none';
+            companyLoginForm.style.display = 'none';
+            candidateLoginFormElement.reset();
+            companyLoginFormElement.reset();
+            
+            // Reset dashboard navigation
+            dashboardNavItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            dashboardContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Set first tab as active
+            if (dashboardNavItems.length > 0) {
+                dashboardNavItems[0].classList.add('active');
+            }
+            if (dashboardContents.length > 0) {
+                dashboardContents[0].classList.add('active');
+            }
+            
+            showNotification('Please login to continue', 'info');
+        });
+        
+        signupBtn.addEventListener('click', () => {
+            // Hide dashboards if they're visible
+            candidateDashboard.style.display = 'none';
+            companyDashboard.style.display = 'none';
+            
+            // Show login section
+            loginSection.style.display = 'flex';
+            loginSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Reset login forms
+            loginOptions.style.display = 'block';
+            candidateLoginForm.style.display = 'none';
+            companyLoginForm.style.display = 'none';
+            candidateLoginFormElement.reset();
+            companyLoginFormElement.reset();
+            
+            // Reset dashboard navigation
+            dashboardNavItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            dashboardContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Set first tab as active
+            if (dashboardNavItems.length > 0) {
+                dashboardNavItems[0].classList.add('active');
+            }
+            if (dashboardContents.length > 0) {
+                dashboardContents[0].classList.add('active');
+            }
+            
+            showNotification('Sign up feature coming soon! Please use the login options for now.', 'info');
         });
         
         // Login option handlers
@@ -3124,6 +3203,17 @@
                 currentUserType = 'company';
                 showNotification('Logged in successfully as Company', 'success');
             }, 1500);
+        });
+        
+        // Signup link handlers
+        candidateSignupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Sign up feature coming soon! Please use the login option for now.', 'info');
+        });
+        
+        companySignupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Sign up feature coming soon! Please use the login option for now.', 'info');
         });
         
         // Logout button handlers
