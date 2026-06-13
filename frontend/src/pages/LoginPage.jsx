@@ -25,7 +25,7 @@ export default function LoginPage() {
     }
   }
 
-  const fillDemo = () => setForm({ email: 'demo@smarthire.ai', password: 'demo1234' })
+  const fillDemo = async () => { const creds = { email: 'demo@smarthire.ai', password: 'demo1234' }; setForm(creds); setLoading(true); try { await login(creds.email, creds.password); toast.success('Welcome!'); navigate('/dashboard'); } catch { toast.error('Demo login failed'); } finally { setLoading(false); } }
 
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center p-4">
