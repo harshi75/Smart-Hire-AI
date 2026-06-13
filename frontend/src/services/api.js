@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE = import.meta.env.VITE_API_URL || ''
+const BASE = import.meta.env.VITE_API_URL || 'https://smarthire-backend-f1x0.onrender.com'
 
 const api = axios.create({
   baseURL: `${BASE}/api`,
